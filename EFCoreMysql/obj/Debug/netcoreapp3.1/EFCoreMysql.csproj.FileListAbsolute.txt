@@ -134,3 +134,5 @@ C:\Users\udita\source\repos\EFCore\EFCoreMysql\obj\Debug\netcoreapp3.1\EFCoreMys
 C:\Users\udita\source\repos\EFCore\EFCoreMysql\obj\Debug\netcoreapp3.1\EFCoreMysql.pdb
 C:\Users\udita\source\repos\EFCore\EFCoreMysql\obj\Debug\netcoreapp3.1\EFCoreMysql.genruntimeconfig.cache
 C:\Users\udita\source\repos\EFCore\EFCoreMysql\obj\Debug\netcoreapp3.1\EFCoreMysql.csproj.CopyComplete
+C:\Users\udita\source\repos\EFCore\EFCoreMysql\bin\Debug\netcoreapp3.1\CSharpFunctionalExtensions.dll
+C:\Users\udita\source\repos\EFCore\EFCoreMysql\bin\Debug\netcoreapp3.1\FluentValidation.dll

@@ -25,15 +25,25 @@ namespace EFCoreMysql.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(767)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Lastname")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Employees");
                 });
@@ -60,6 +70,9 @@ namespace EFCoreMysql.Migrations
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("ProjectDescription")
+                        .HasColumnType("text");
 
                     b.Property<string>("ProjectName")
                         .HasColumnType("varchar(767)");

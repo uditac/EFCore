@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreMysql.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20211222101455_init")]
-    partial class init
+    [Migration("20211222142939_alterProject")]
+    partial class alterProject
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,17 +24,28 @@ namespace EFCoreMysql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Lastname")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("FirstName");
-
-                    b.HasIndex("Lastname");
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Employees");
                 });
@@ -61,6 +72,9 @@ namespace EFCoreMysql.Migrations
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("ProjectDescription")
+                        .HasColumnType("text");
 
                     b.Property<string>("ProjectName")
                         .HasColumnType("varchar(767)");

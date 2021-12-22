@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CSharpFunctionalExtensions;
+using System.Text.RegularExpressions;
 
 namespace EFCoreMysql.Models
 {
@@ -15,6 +15,39 @@ namespace EFCoreMysql.Models
 
         public string ProjectName { get; set; }
 
+        public Description ProjectDescription { get; set; }
+
         public virtual ICollection<EmployeeProject> EmployeeProjects { get; set; }
     }
+
+
+    public class Description : ValueObject
+    {
+        public string Value { get; }
+        private Description(string value)
+        {
+            Value = value;
+        }
+
+        public static Result<Description> Create(string input)
+        {
+
+
+            string address = input.Trim();
+
+            if (address.Length > 500)
+                return Result.Failure<Description>("value is too long");
+
+            if (Regex.IsMatch(address, @"[A-Za-z0-9'\.\-\s\,]") == false)
+                return Result.Failure<Description>("Value is invalid");
+
+
+            return Result.Success(new Description(address));
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            throw new NotImplementedException();
+        }
     }
+}

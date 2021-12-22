@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreMysql.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20211222104451_Employee_addcolumn")]
-    partial class Employee_addcolumn
+    [Migration("20211222141804_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,15 @@ namespace EFCoreMysql.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Lastname")
                         .IsRequired()

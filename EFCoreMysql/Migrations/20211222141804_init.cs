@@ -13,8 +13,11 @@ namespace EFCoreMysql.Migrations
                 {
                     EmployeeId = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(nullable: true),
-                    Lastname = table.Column<string>(nullable: true)
+                    Id = table.Column<long>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    Lastname = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,16 +70,6 @@ namespace EFCoreMysql.Migrations
                 name: "IX_EmployeeProject_ProjectId",
                 table: "EmployeeProject",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_FirstName",
-                table: "Employees",
-                column: "FirstName");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_Lastname",
-                table: "Employees",
-                column: "Lastname");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectName",
