@@ -7,10 +7,30 @@ namespace EFCoreMysql.Models
 {
     public class Employee :Entity
     {
-        //public Employee()
-        //{
-        //    this.Projects = new HashSet<Project>();
-        //}
+        protected Employee() { }
+
+        private Employee(string firstname, string lastname, Address address, Email email)
+        {
+            FirstName = firstname;
+            Lastname = lastname;
+            Address = address;
+            Email = email;
+        }
+      
+
+        public static Result<Employee> Create(string firstname, string lastname, string address, string email)
+        {
+            if(firstname== null)
+                throw new ArgumentNullException("First Name should not be null");
+            if(lastname == null)
+                throw new ArgumentNullException("Last Name should not be null");
+
+            if(email == null)
+                throw new ArgumentNullException("Email should not be null");
+
+            return Result.Success(new Employee(firstname, lastname, Address.Create(address).Value, Email.Create(email).Value));
+
+        }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
 
@@ -21,6 +41,9 @@ namespace EFCoreMysql.Models
         public Email Email { get; set; }
 
         public virtual  ICollection<EmployeeProject> EmployeeProjects { get; set; }
+
+
+
     }
 
 
@@ -33,7 +56,7 @@ namespace EFCoreMysql.Models
             Value = value;
         }
 
-        private static Result<Email> Create(string input)
+        public static Result<Email> Create(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return Result.Failure<Email>("Value is Required");

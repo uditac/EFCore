@@ -42,6 +42,7 @@ namespace EFCoreMysql.DBContexts
             {
                 entity.HasKey(p => p.ProjectId);
                 entity.HasIndex(p => p.ProjectName);
+                entity.Property(p => p.ProjectName).IsRequired();
                 entity.Property(u => u.ProjectDescription).HasConversion(
                     x => x.Value,
                     x => Description.Create(x).Value);

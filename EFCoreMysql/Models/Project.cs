@@ -7,10 +7,24 @@ namespace EFCoreMysql.Models
 {
     public class Project
     {
-        //public Project()
-        //{
-        //    this.Employees = new HashSet<Employee>();
-        //}
+
+        protected Project() { }
+
+        private Project(string projectName, Description description)
+        {
+            ProjectName = projectName;
+            ProjectDescription = description;
+        }
+
+        public static Result<Project> Create(string ProjectName, string description)
+        {
+            if (ProjectName == null)
+                throw new ArgumentNullException("ProjectName should not be null");
+    
+
+            return Result.Success(new Project(ProjectName,Description.Create(description).Value));
+        }
+
         public int ProjectId { get; set; }
 
         public string ProjectName { get; set; }
@@ -23,6 +37,7 @@ namespace EFCoreMysql.Models
 
     public class Description : ValueObject
     {
+        protected Description() { }
         public string Value { get; }
         private Description(string value)
         {
@@ -32,17 +47,12 @@ namespace EFCoreMysql.Models
         public static Result<Description> Create(string input)
         {
 
+            string description = input.Trim();
 
-            string address = input.Trim();
-
-            if (address.Length > 500)
+            if (description.Length > 500)
                 return Result.Failure<Description>("value is too long");
 
-            if (Regex.IsMatch(address, @"[A-Za-z0-9'\.\-\s\,]") == false)
-                return Result.Failure<Description>("Value is invalid");
-
-
-            return Result.Success(new Description(address));
+            return Result.Success(new Description(description));
         }
 
         protected override IEnumerable<object> GetEqualityComponents()
