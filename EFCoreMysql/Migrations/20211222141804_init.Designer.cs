@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreMysql.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20211222101455_init")]
+    [Migration("20211222141804_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,28 +18,35 @@ namespace EFCoreMysql.Migrations
                 .HasAnnotation("ProductVersion", "3.1.22")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("EFCoreMysql.Models.Employee", b =>
+            modelBuilder.Entity("EFCoreMysql.Domain.Employee", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
                     b.Property<string>("FirstName")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Lastname")
-                        .HasColumnType("varchar(767)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("EmployeeId");
-
-                    b.HasIndex("FirstName");
-
-                    b.HasIndex("Lastname");
 
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("EFCoreMysql.Models.EmployeeProject", b =>
+            modelBuilder.Entity("EFCoreMysql.Domain.EmployeeProject", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
@@ -56,7 +63,7 @@ namespace EFCoreMysql.Migrations
                     b.ToTable("EmployeeProject");
                 });
 
-            modelBuilder.Entity("EFCoreMysql.Models.Project", b =>
+            modelBuilder.Entity("EFCoreMysql.Domain.Project", b =>
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
@@ -72,15 +79,15 @@ namespace EFCoreMysql.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("EFCoreMysql.Models.EmployeeProject", b =>
+            modelBuilder.Entity("EFCoreMysql.Domain.EmployeeProject", b =>
                 {
-                    b.HasOne("EFCoreMysql.Models.Employee", "Employee")
+                    b.HasOne("EFCoreMysql.Domain.Employee", "Employee")
                         .WithMany("EmployeeProjects")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EFCoreMysql.Models.Project", "Project")
+                    b.HasOne("EFCoreMysql.Domain.Project", "Project")
                         .WithMany("EmployeeProjects")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)

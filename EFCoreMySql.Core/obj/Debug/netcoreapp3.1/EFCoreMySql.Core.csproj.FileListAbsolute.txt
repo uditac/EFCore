@@ -1,0 +1,10 @@
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\bin\Debug\netcoreapp3.1\EFCoreMySql.Core.deps.json
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\bin\Debug\netcoreapp3.1\EFCoreMySql.Core.dll
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\bin\Debug\netcoreapp3.1\EFCoreMySql.Core.pdb
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.csproj.AssemblyReference.cache
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.AssemblyInfoInputs.cache
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.AssemblyInfo.cs
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.csproj.CoreCompileInputs.cache
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.dll
+C:\Users\udita\source\repos\EFCore\EFCoreMySql.Core\obj\Debug\netcoreapp3.1\EFCoreMySql.Core.pdb

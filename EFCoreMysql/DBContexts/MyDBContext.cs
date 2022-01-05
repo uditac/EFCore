@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using EFCoreMysql.Models;
+using EFCoreMysql.Domain;
 
 
 namespace EFCoreMysql.DBContexts
@@ -27,14 +27,25 @@ namespace EFCoreMysql.DBContexts
             {
                 entity.HasKey(ug => ug.EmployeeId);
                 entity.Property(u => u.FirstName).IsRequired();
-                entity.Property(u => u.Lastname).IsRequired();
-                entity.Property(u => u.Address);
+                entity.Property(u => u.Lastname).IsRequired();              
+                entity.Property(u => u.Address).HasConversion(
+                    x => x.Value, 
+                    x=> Address.Create(x).Value);
+                entity.Property(u => u.Email).HasConversion(
+                    x => x.Value,
+                    x => Email.Create(x).Value
+                    ).IsRequired();
+                entity.HasIndex(u => u.Email).IsUnique();
             });
 
             modelBuilder.Entity<Project>(entity =>
             {
                 entity.HasKey(p => p.ProjectId);
                 entity.HasIndex(p => p.ProjectName);
+                entity.Property(p => p.ProjectName).IsRequired();
+                entity.Property(u => u.ProjectDescription).HasConversion(
+                    x => x.Value,
+                    x => Description.Create(x).Value);
             });
 
             modelBuilder.Entity<EmployeeProject>(entity =>

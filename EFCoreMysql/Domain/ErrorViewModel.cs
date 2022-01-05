@@ -1,6 +1,6 @@
 using System;
 
-namespace EFCoreMysql.Models
+namespace EFCoreMysql.Domain
 {
     public class ErrorViewModel
     {
