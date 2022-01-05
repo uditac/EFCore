@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EFCoreMysql.Models;
+using EFCoreMysql.Domain;
 using EFCoreMysql.DBContexts;
 
 namespace EFCoreMysql.Repository

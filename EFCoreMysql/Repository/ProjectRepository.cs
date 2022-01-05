@@ -1,5 +1,5 @@
 ﻿using EFCoreMysql.DBContexts;
-using EFCoreMysql.Models;
+using EFCoreMysql.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace EFCoreMysql.Repository
 {
     public interface IProjectRepository
     {
-        Task<Project> CreateProject(string projectName, string description);
+        Task<Project> CreateProjectAsync(string projectName, string description);
     }
     public class ProjectRepository : IProjectRepository
     {
@@ -18,7 +18,7 @@ namespace EFCoreMysql.Repository
         {
             _dbContext = dbContext;
         }
-        public async Task<Project> CreateProject(string projectName, string description)
+        public async Task<Project> CreateProjectAsync(string projectName, string description)
         {
             Project newProject = Project.Create(projectName,description).Value;
             await _dbContext.AddAsync<Project>(newProject);

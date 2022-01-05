@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using EFCoreMysql.Models;
+using EFCoreMysql.Domain;
 
 
 namespace EFCoreMysql.DBContexts

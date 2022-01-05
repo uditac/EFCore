@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 using System.Text.RegularExpressions;
 
-namespace EFCoreMysql.Models
+namespace EFCoreMysql.Domain
 {
     public class Project
     {
